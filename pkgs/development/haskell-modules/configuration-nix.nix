@@ -473,4 +473,8 @@ self: super: builtins.intersectAttrs super {
   # Needs a newer version of hsyslog than lts-8.x provides.
   logging-facade-syslog = super.logging-facade-syslog.override { hsyslog = self.hsyslog_5; };
 
+  # https://github.com/dan-t/cabal-bounds/pull/10
+  # Fixed in cabal-bounds 1.2.0
+  cabal-bounds = appendPatch super.cabal-bounds ./patches/cabal-bounds-Raise-directory-bound.patch;
+
 }
